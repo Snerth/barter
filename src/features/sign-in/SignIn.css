@@ -1,0 +1,32 @@
+.page-container {
+    background-color: #D8D6D6;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-card-title {
+    align-self: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.forgot-password-link {
+    font-size: .7rem;
+    cursor: pointer;
+}
+
+.sign-up-link {
+    font-size: .7rem;
+    cursor: pointer;
+}
+
+.sign-up-link:hover {
+    color: rgb(88, 88, 88)
+}
+
+.forgot-password-link:hover {
+   color: rgb(88, 88, 88)
+}

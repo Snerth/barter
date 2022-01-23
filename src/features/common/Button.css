@@ -1,0 +1,53 @@
+button {
+    min-width: 6rem;
+    width: max-content;
+    border: none;
+    padding: .7rem;
+    color: white;
+    cursor: pointer;
+}
+
+.button--red {
+    background-color: #E98167;
+}
+
+.button--red:hover {
+    background-color: #ee7253;
+    transition: .4s;
+}
+
+.button--gray {
+    background-color: #D8D6D6;
+}
+
+.button--gray:hover {
+    background-color: #bebebe;
+    transition: .4s;
+}
+
+.button--pink {
+    background-color: #FEC2A3;
+}
+
+.button--pink:hover {
+    background-color: #ffac82;
+    transition: .4s;
+}
+
+.button--pale-green {
+    background-color: #A4CAC8;
+}
+
+.button--pale-green:hover {
+    background-color: #8ccecb;
+    transition: .4s;
+}
+
+.button--green {
+    background-color: #79ACA9;
+}
+
+.button--green:hover {
+    background-color: rgb(101, 197, 192);
+    transition: .4s;
+}
