@@ -1,0 +1,12 @@
+@import './utils/vars.css';
+
+.tiny-link-text {
+    font-size: .7rem;
+    color: var(--color-gray-dark);
+    transition: .4s;
+    cursor: pointer;
+}
+
+.tiny-link-text:hover {
+   color: var(--color-black);
+}

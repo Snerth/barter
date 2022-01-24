@@ -2,7 +2,8 @@ import React, { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
-import Input from "../common/Input";
+import { Input } from "../common/Input";
+import { TinyLink } from "../common/TinyLink";
 import { ButtonColor, IInputProps, InputType } from "../types/Types";
 import "./SignIn.css";
 
@@ -30,19 +31,20 @@ function SignIn() {
     type: "password",
   };
 
-  const validateLogin = (loginText: string) => {
-    if (loginText === "1") {
-      setLogin((prev) => ({ ...prev, loginInputType: InputType.error }));
-    } else {
-      setLogin((prev) => ({ ...prev, loginInputType: InputType.regular }));
-    }
-  };
-
   const handleLoginChange =
     () => (loginEvent: ChangeEvent<HTMLInputElement>) => {
       loginEvent.persist();
-      validateLogin(loginEvent.target.value);
-      setLogin((prev) => ({ ...prev, text: loginEvent.target.value }));
+      if (loginEvent.target.value === "error") {
+        setLogin({
+          text: loginEvent.target.value,
+          loginInputType: InputType.error,
+        });
+      } else {
+        setLogin({
+          text: loginEvent.target.value,
+          loginInputType: InputType.regular,
+        });
+      }
     };
 
   const handlePasswordChange =
@@ -66,13 +68,12 @@ function SignIn() {
             value={password.text}
             onChange={handlePasswordChange()}
           />
-          <Link to="/forgot-password">
-            <div className="forgot-password-link">Forgot password?</div>
-          </Link>
-          <Link to="/sign-up">
-            <div className="sign-up-link">Don't have an account?</div>
-          </Link>
-          <Button buttonColor={ButtonColor.red}>Sign In</Button>
+          <TinyLink
+            linkText="Forgot password?"
+            destination="/forgot-password"
+          />
+          <TinyLink linkText="Don't have an account?" destination="/sign-up" />
+          <Button buttonColor={ButtonColor.coral}>Sign In</Button>
         </Card>
       </div>
     </>

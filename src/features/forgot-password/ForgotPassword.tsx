@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
-import Input from "../common/Input";
+import { Input } from "../common/Input";
 import { ButtonColor, IInputProps, InputType } from "../types/Types";
 import "./ForgotPassword.css";
 
@@ -38,7 +38,7 @@ export const ForgotPassword: React.FC = () => {
           <Link to="/sign-in">
             <div className="sign-in-link">Back to Sign In page</div>
           </Link>
-          <Button buttonColor={ButtonColor.red}>Send</Button>
+          <Button buttonColor={ButtonColor.coral}>Send</Button>
         </div>
       </Card>
     </div>

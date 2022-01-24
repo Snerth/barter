@@ -1,0 +1,6 @@
+@import './utils/vars.css';
+
+.input-error-message {
+    color: var(--color-coral-dark);
+    font-size: .7rem;
+}

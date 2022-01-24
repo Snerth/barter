@@ -6,3 +6,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.sign-up-card-title {
+    align-self: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}

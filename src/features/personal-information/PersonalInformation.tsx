@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
-import Input from "../common/Input";
+import { Input } from "../common/Input";
 import { ButtonColor, IInputProps, InputType } from "../types/Types";
 // import "./SignUp.css";
 
@@ -127,7 +127,7 @@ export const PersonalInformation = () => {
             <div className="terms-of-usage-link">Terms of usage</div>
           </Link>
           <Link to="/trades-overview">
-            <Button buttonColor={ButtonColor.red}>Sign Up</Button>
+            <Button buttonColor={ButtonColor.coral}>Sign Up</Button>
           </Link>
         </Card>
       </div>

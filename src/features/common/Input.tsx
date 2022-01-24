@@ -2,7 +2,7 @@ import React from "react";
 import { IInputProps } from "../types/Types";
 import "./Input.css";
 
-function Input(props: IInputProps) {
+export const Input: React.FC<IInputProps> = (props: IInputProps) => {
   const { inputType, label, ...rest } = props;
   return (
     <label>
@@ -12,6 +12,4 @@ function Input(props: IInputProps) {
       </span>
     </label>
   );
-}
-
-export default Input;
+};

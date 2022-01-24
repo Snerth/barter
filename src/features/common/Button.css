@@ -1,53 +1,42 @@
+@import "./utils/vars.css";
+
 button {
-    min-width: 6rem;
-    width: max-content;
-    border: none;
-    padding: .7rem;
-    color: white;
-    cursor: pointer;
+  min-width: 6rem;
+  width: max-content;
+  border: none;
+  padding: 0.7rem;
+  color: white;
+  cursor: pointer;
 }
 
-.button--red {
-    background-color: #E98167;
+.button--coral {
+  background-color: var(--color-coral);
 }
 
-.button--red:hover {
-    background-color: #ee7253;
-    transition: .4s;
+.button--coral:hover {
+  background-color: var(--color-coral-hover);
+  transition: 0.4s;
 }
 
 .button--gray {
-    background-color: #D8D6D6;
+  background-color: var(--color-gray);
+  cursor: not-allowed;
 }
 
-.button--gray:hover {
-    background-color: #bebebe;
-    transition: .4s;
+.button--yellow {
+  background-color: var(--color-yellow);
 }
 
-.button--pink {
-    background-color: #FEC2A3;
+.button--yellow:hover {
+  background-color: var(--color-yellow-hover);
+  transition: 0.4s;
 }
 
-.button--pink:hover {
-    background-color: #ffac82;
-    transition: .4s;
+.button--turquoise {
+  background-color: var(--color-turquoise);
 }
 
-.button--pale-green {
-    background-color: #A4CAC8;
-}
-
-.button--pale-green:hover {
-    background-color: #8ccecb;
-    transition: .4s;
-}
-
-.button--green {
-    background-color: #79ACA9;
-}
-
-.button--green:hover {
-    background-color: rgb(101, 197, 192);
-    transition: .4s;
+.button--turquoise:hover {
+  background-color: var(--color-turquoise-hover);
+  transition: 0.4s;
 }

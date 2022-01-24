@@ -1,0 +1,20 @@
+:root {
+  --color-gray: #D8D6D6;
+  --color-gray-hover: #eeecec;
+  --color-gray-dark: #9c9c9c;
+
+  --color-coral: #e98167;
+  --color-coral-hover: #fec2a3;
+  --color-coral-dark: #bd583f;
+
+  --color-black: rgb(24, 24, 24);
+  --color-white: rgb(241, 241, 241);
+
+  --color-yellow: #c99e29;
+  --color-yellow-hover: #f0c859;
+  --color-yellow-dark: #917528;
+
+  --color-turquoise: #79aca9;
+  --color-turquoise-hover: #a6e2de;
+  --color-turquoise-dark: #437470;
+}

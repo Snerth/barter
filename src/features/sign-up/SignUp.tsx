@@ -2,20 +2,70 @@ import React, { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
-import Input from "../common/Input";
+import { Input } from "../common/Input";
+import { TinyLink } from "../common/TinyLink";
+import validator from "../common/utils/validator";
 import { ButtonColor, IInputProps, InputType } from "../types/Types";
+import { InputErrorMessage } from "../common/InputErrorMessage";
 import "./SignUp.css";
 
+export interface ILoginState {
+  loginErrorMessage: LoginErrorMessage | null;
+  text: string;
+  loginInputType: InputType;
+}
+
+export interface IPasswordState {
+  passwordErrorMessage: PasswordErrorMessage | null;
+  text: string;
+  passwordInputType: InputType;
+}
+
+export interface IRepeatPasswordState {
+  repeatPasswordErrorMessage: RepeatPasswordErrorMessage | null;
+  text: string;
+  repeatPasswordInputType: InputType;
+}
+
+enum LoginErrorMessage {
+  moreThanThreeChars = "Login must contain at least 3 characters",
+  unique = "This login is already taken. Please, try another one",
+  lessThanTenChars = "Login must contain maximum 10 characters",
+  noWhitespace = "Login must not contain whitespaces",
+  noSpecialChars = "Login must not contain special characters",
+}
+
+enum PasswordErrorMessage {
+  moreThanEightChars = "Password must contain at least 8 characters",
+  lessThanFifteenCharacters = "Password must contain maximum 15 characters",
+  atLeastOneCapitalChar = "Password must contain at least one capital character",
+  atLeastOneDigit = "Password must contain at least one digit",
+}
+
+enum RepeatPasswordErrorMessage {
+  matches = "Passwords must match",
+}
+
 function SignUp() {
-  const [login, setLogin] = useState({
+  const [isError, setIsError] = useState<boolean>(false);
+
+  const [login, setLogin] = useState<ILoginState>({
     text: "",
     loginInputType: InputType.regular,
+    loginErrorMessage: null,
   });
 
-    const [password, setPassword] = useState({
-      text: "",
-      passwordInputType: InputType.password,
-    });
+  const [password, setPassword] = useState<IPasswordState>({
+    text: "",
+    passwordInputType: InputType.password,
+    passwordErrorMessage: null,
+  });
+
+  const [repeatPassword, setRepeatPassword] = useState<IRepeatPasswordState>({
+    text: "",
+    repeatPasswordInputType: InputType.password,
+    repeatPasswordErrorMessage: null,
+  });
 
   const loginInputProps: IInputProps = {
     inputType: login.loginInputType,
@@ -23,33 +73,141 @@ function SignUp() {
     placeholder: "Create your login",
   };
 
-    const passwordInputProps: IInputProps = {
-      inputType: password.passwordInputType,
-      label: "Password",
-      placeholder: "Enter your password",
-      type: "password",
-    };
+  const passwordInputProps: IInputProps = {
+    inputType: password.passwordInputType,
+    label: "Password",
+    placeholder: "Create your password",
+    type: "password",
+  };
 
-  const validateLogin = (loginText: string) => {
-    if (loginText === "1") {
-      setLogin((prev) => ({ ...prev, loginInputType: InputType.error }));
-    } else {
-      setLogin((prev) => ({ ...prev, loginInputType: InputType.regular }));
-    }
+  const repeatPasswordInputProps: IInputProps = {
+    inputType: repeatPassword.repeatPasswordInputType,
+    label: "Repeat Password",
+    placeholder: "Repeat password",
+    type: "password",
+  };
+
+  const setLoginState = (
+    loginErrorMessage: LoginErrorMessage | null,
+    text: string,
+    loginInputType: InputType
+  ) => {
+    setLogin((prev) => ({ ...prev, loginErrorMessage, text, loginInputType }));
+  };
+
+  const setPasswordState = (
+    passwordErrorMessage: PasswordErrorMessage | null,
+    text: string,
+    passwordInputType: InputType
+  ) => {
+    setPassword((prev) => ({
+      ...prev,
+      passwordErrorMessage,
+      text,
+      passwordInputType,
+    }));
+  };
+
+  const setRepeatPasswordState = (
+    repeatPasswordErrorMessage: RepeatPasswordErrorMessage | null,
+    text: string,
+    repeatPasswordInputType: InputType
+  ) => {
+    setRepeatPassword((prev) => ({
+      ...prev,
+      repeatPasswordErrorMessage,
+      text,
+      repeatPasswordInputType,
+    }));
   };
 
   const handleLoginChange =
     () => (loginEvent: ChangeEvent<HTMLInputElement>) => {
       loginEvent.persist();
-      validateLogin(loginEvent.target.value);
-      setLogin((prev) => ({ ...prev, text: loginEvent.target.value }));
+      const login = loginEvent.target.value;
+      if (validator.isLessThanThreeChars(login)) {
+        setLoginState(
+          LoginErrorMessage.moreThanThreeChars,
+          login,
+          InputType.error
+        );
+        setIsError(true);
+      } else if (validator.isMoreThanTenChars(login)) {
+        setLoginState(
+          LoginErrorMessage.lessThanTenChars,
+          login,
+          InputType.error
+        );
+        setIsError(true);
+      } else if (login === "notUnique") {
+        setLoginState(LoginErrorMessage.unique, login, InputType.error);
+        setIsError(true);
+      } else if (validator.containsWhitespaces(login)) {
+        setLoginState(LoginErrorMessage.noWhitespace, login, InputType.error);
+        setIsError(true);
+      } else if (validator.containsSpecialCharacters(login)) {
+        setLoginState(LoginErrorMessage.noWhitespace, login, InputType.error);
+        setIsError(true);
+      } else {
+        setLoginState(null, login, InputType.regular);
+        setIsError(false);
+      }
     };
 
-    const handlePasswordChange =
-      () => (loginEvent: ChangeEvent<HTMLInputElement>) => {
-        loginEvent.persist();
-        setPassword({ ...password, text: loginEvent.target.value });
-      };
+  const handlePasswordChange =
+    () => (passwordEvent: ChangeEvent<HTMLInputElement>) => {
+      const password = passwordEvent.target.value;
+      passwordEvent.persist();
+      if (validator.isLessThanEightChars(password)) {
+        setPasswordState(
+          PasswordErrorMessage.moreThanEightChars,
+          password,
+          InputType.error
+        );
+        setIsError(true);
+      } else if (validator.isMoreThanFifteenChars(password)) {
+        setPasswordState(
+          PasswordErrorMessage.lessThanFifteenCharacters,
+          password,
+          InputType.error
+        );
+        setIsError(true);
+      } else if (validator.containsCapitalLetter(password)) {
+        setPasswordState(
+          PasswordErrorMessage.atLeastOneCapitalChar,
+          password,
+          InputType.error
+        );
+        setIsError(true);
+      } else if (validator.containsDigit(password)) {
+        setPasswordState(
+          PasswordErrorMessage.atLeastOneDigit,
+          password,
+          InputType.error
+        );
+        setIsError(true);
+      } else {
+        setPasswordState(null, password, InputType.regular);
+        setIsError(false);
+      }
+    };
+
+  const handleRepeatPasswordChange =
+    () => (repeatPasswordEvent: ChangeEvent<HTMLInputElement>) => {
+      repeatPasswordEvent.persist();
+      const repeatPassword = repeatPasswordEvent.target.value;
+      if (validator.matchesValue(repeatPassword, password.text)) {
+        setRepeatPasswordState(
+          RepeatPasswordErrorMessage.matches,
+          repeatPassword,
+          InputType.error
+        );
+        setIsError(true);
+      } else {
+        setRepeatPasswordState(null, repeatPassword, InputType.regular);
+        setIsError(false);
+      }
+    };
 
   return (
     <>
@@ -61,17 +219,39 @@ function SignUp() {
             value={login.text}
             onChange={handleLoginChange()}
           />
+          <InputErrorMessage
+            errorMessage={login.loginErrorMessage}
+          ></InputErrorMessage>
           <Input
             {...passwordInputProps}
             value={password.text}
             onChange={handlePasswordChange()}
           />
-          <Link to="/sign-in">
-            <div className="back-to-sign-in-link">Already have an account?</div>
-          </Link>
-          <Link to="/sign-in/personal-information">
-            <Button buttonColor={ButtonColor.red}>Continue</Button>
-          </Link>
+          <InputErrorMessage
+            errorMessage={password.passwordErrorMessage}
+          ></InputErrorMessage>
+          <Input
+            {...repeatPasswordInputProps}
+            value={repeatPassword.text}
+            onChange={handleRepeatPasswordChange()}
+          />
+          <InputErrorMessage
+            errorMessage={repeatPassword.repeatPasswordErrorMessage}
+          ></InputErrorMessage>
+          <TinyLink
+            linkText="Already have an account?"
+            destination="/sign-in"
+          />
+          <TinyLink
+            linkText="Forgot password?"
+            destination="/forgot-password"
+          />
+          <Button
+            disabled={isError}
+            buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
+          >
+            Continue
+          </Button>
         </Card>
       </div>
     </>

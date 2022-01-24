@@ -1,3 +1,5 @@
+@import './features/common/utils/vars.css';
+
 .welcome-page-container {
     text-align: center;
     padding: 10% 20%;
@@ -17,9 +19,27 @@
     font-size: 1.5rem;
     margin-top: 3rem;
     margin-bottom: 1rem;
+    line-height: 2rem;
 }
 
-.welcome-question {
-    margin-bottom: .5rem;
-    margin-top: 1rem;
+.welcome-page-action-section {
+    border-radius: 40px;
+    width: 20rem;
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: .5rem;
+    transition: 1s;
+}
+
+.welcome-page-action-section:hover {
+    background-color: var(--color-gray-hover);
+}
+
+.welcome-page-actions-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
 }

@@ -1,23 +1,35 @@
-import { InputHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, InputHTMLAttributes } from "react";
 
 export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-    inputType: InputType,
-    label: string,
+  inputType: InputType;
+  label: string;
+}
+
+export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  buttonColor: ButtonColor;
 }
 
 export enum ButtonColor {
-    gray = 'button--gray',
-    red = 'button--red',
-    pink = 'button--pink',
-    paleGreen = 'button--pale-green',
-    green = 'button--green'
+  coral = "button--coral",
+  gray = "button--gray",
+  yellow = "button--yellow",
+  turquoise = "button--turquoise",
 }
 
 export enum InputType {
-    regular = 'input--regular',
-    warning = 'input--warning',
-    error = 'input--error',
-    disabled = 'input--disabled',
-    password = 'input--password',
-    success = 'input--success'
+  regular = "input--regular",
+  warning = "input--warning",
+  error = "input--error",
+  disabled = "input--disabled",
+  password = "input--password",
+  success = "input--success",
+}
+
+export interface ITinyLinkProps {
+  destination: string;
+  linkText: string;
+}
+
+export interface IInputErrorMessageProps {
+  errorMessage: any;
 }

@@ -1,15 +1,16 @@
+@import "../common/utils/vars.css";
+
 label {
   position: relative;
   width: 15rem;
 }
 
 input {
-  border: none;
+  border: 1px solid var(--color-gray-hover);
   box-sizing: border-box;
-  width: var(--fieldWidth, 100%);
-  height: var(--fieldHeight, 3rem);
-  padding: var(--fieldPaddingTop, 1.25rem) 1rem
-    var(--fieldPaddingBottom, 0.5rem) 1rem;
+  width: 100%;
+  height: 3rem;
+  padding: 1.25rem 1rem 0.5rem 1rem;
 }
 
 input:focus {
@@ -22,7 +23,7 @@ input::-webkit-input-placeholder {
 }
 
 input:focus::-webkit-input-placeholder {
-  color: #9c9c9c;
+  color: var(--color-gray-dark);
   opacity: 1;
   transition-delay: 0.2s;
 }
@@ -33,43 +34,43 @@ input:focus ~ .input-label-container::after {
 
 input:focus ~ .input-label-container .input-label,
 input:not(:placeholder-shown) ~ .input-label-container .input-label {
-  --fieldHintFontSize: var(--fieldHintFontSizeFocused, 0.75rem);
-  top: var(--fieldHintTopHover, 0.25rem);
+  font-size: 0.75rem;
+  top: 0.25rem;
 }
 
 .input--error {
-  border-bottom: 2px solid #e98167;
-  background-color: #fec2a3;
-  color: #bd583f;
+  border-bottom: 2px solid var(--color-coral);
+  background-color: var(--color-coral-hover);
+  color: var(--color-coral-dark);
 }
 
 .input--regular {
-  border-bottom: 2px solid rgb(19, 19, 19);
-  background-color: rgb(241, 241, 241);
+  border-bottom: 2px solid var(--color-black);
+  background-color: var(--color-white);
 }
 
 .input--disabled {
-  border-bottom: 2px solid rgb(129, 129, 129);
-  background-color: rgb(201, 201, 201);
-  color: rgb(129, 129, 129);
+  border-bottom: 2px solid var(--color-gray-dark);
+  background-color: var(--color-gray-hover);
+  color: var(--color-gray-dark);
 }
 
 .input--password {
-  border-bottom: 2px solid rgb(129, 129, 129);
-  background-color: rgb(240, 240, 240);
-  color: rgb(129, 129, 129);
+  border-bottom: 2px solid var(--color-gray-dark);
+  background-color: var(--color-gray-hover);
+  color: var(--color-gray-dark);
 }
 
 .input--warning {
-  border-bottom: 2px solid #c99e29;
-  background-color: #ebdaac;
-  color: #c99e29;
+  border-bottom: 2px solid var(--color-yellow-dark);
+  background-color: var(--color-yellow-hover);
+  color: var(--color-yellow-dark);
 }
 
 .input--success {
-  border-bottom: 2px solid #79aca9;
-  background-color: #a4cac8;
-  color: #79aca9;
+  border-bottom: 2px solid var(--color-turquoise-dark);
+  background-color: var(--color-turquoise-hover);
+  color: var(--color-turquoise-dark);
 }
 
 .input-label-container {
@@ -104,7 +105,7 @@ label .input-label-container::after {
   left: 1rem;
   top: calc(50% - 0.5em);
   line-height: 1;
-  font-size: var(--fieldHintFontSize, inherit);
+  font-size: inherit;
   transition: top 0.2s cubic-bezier(0.9, -0.15, 0.1, 1.15),
     opacity 0.2s ease-out, font-size 0.2s ease-out;
   will-change: bottom, opacity, font-size;
