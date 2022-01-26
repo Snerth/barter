@@ -1,13 +1,23 @@
 @import './features/common/utils/vars.css';
 
 .welcome-page-container {
+    width: 100vw;
+    height: 100vh;
     text-align: center;
-    padding: 10% 20%;
+    background-image: url('./features/common/assets/pexels-max-fischer-5868244.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .welcome-text {
     font-size: 5rem;
-    margin-top: 3rem;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255, 255, 255, 0.692) 50%, rgba(255,255,255,0) 100%);
+    width: 100vw;
 }
 
 .description-text span {
@@ -20,6 +30,9 @@
     margin-top: 3rem;
     margin-bottom: 1rem;
     line-height: 2rem;
+    background: linear-gradient(90deg, rgba(222,148,33,1) 0%, rgba(237,169,58,1) 100%);
+    width: 60%;
+    padding: 7px;
 }
 
 .welcome-page-action-section {
@@ -30,12 +43,14 @@
     flex-direction: column;
     justify-content: center;
     row-gap: .5rem;
-    transition: 1s;
+    /* transition: 1s; */
+    background-color: var(--color-white);
+    box-shadow: 1px 1px 15px -4px #00000085;
 }
 
-.welcome-page-action-section:hover {
+/* .welcome-page-action-section:hover {
     background-color: var(--color-gray-hover);
-}
+} */
 
 .welcome-page-actions-container {
     width: 100%;

@@ -5,49 +5,12 @@ import { Card } from "../common/Card";
 import { Input } from "../common/Input";
 import { TinyLink } from "../common/TinyLink";
 import validator from "../common/utils/validator";
-import { ButtonColor, IInputProps, InputType } from "../types/Types";
+import { ButtonColor, IInputProps, ILoginState, InputType, IPasswordState, IRepeatPasswordState, LoginErrorMessage, PasswordErrorMessage, RepeatPasswordErrorMessage } from "../types/Types";
 import { InputErrorMessage } from "../common/InputErrorMessage";
 import "./SignUp.css";
 
-export interface ILoginState {
-  loginErrorMessage: LoginErrorMessage | null;
-  text: string;
-  loginInputType: InputType;
-}
-
-export interface IPasswordState {
-  passwordErrorMessage: PasswordErrorMessage | null;
-  text: string;
-  passwordInputType: InputType;
-}
-
-export interface IRepeatPasswordState {
-  repeatPasswordErrorMessage: RepeatPasswordErrorMessage | null;
-  text: string;
-  repeatPasswordInputType: InputType;
-}
-
-enum LoginErrorMessage {
-  moreThanThreeChars = "Login must contain at least 3 characters",
-  unique = "This login is already taken. Please, try another one",
-  lessThanTenChars = "Login must contain maximum 10 characters",
-  noWhitespace = "Login must not contain whitespaces",
-  noSpecialChars = "Login must not contain special characters",
-}
-
-enum PasswordErrorMessage {
-  moreThanEightChars = "Password must contain at least 8 characters",
-  lessThanFifteenCharacters = "Password must contain maximum 15 characters",
-  atLeastOneCapitalChar = "Password must contain at least one capital character",
-  atLeastOneDigit = "Password must contain at least one digit",
-}
-
-enum RepeatPasswordErrorMessage {
-  matches = "Passwords must match",
-}
-
-function SignUp() {
-  const [isError, setIsError] = useState<boolean>(false);
+export const SignUp: React.FC = () => {
+  const [isError, setIsError] = useState<boolean>(true);
 
   const [login, setLogin] = useState<ILoginState>({
     text: "",
@@ -146,7 +109,11 @@ function SignUp() {
         setLoginState(LoginErrorMessage.noWhitespace, login, InputType.error);
         setIsError(true);
       } else if (validator.containsSpecialCharacters(login)) {
-        setLoginState(LoginErrorMessage.noWhitespace, login, InputType.error);
+        setLoginState(LoginErrorMessage.noSpecialChars, login, InputType.error);
+        setIsError(true);
+        // TODO resolve this issue
+      } else if (login.length === 0) {
+        setLoginState(LoginErrorMessage.empty, login, InputType.error);
         setIsError(true);
       } else {
         setLoginState(null, login, InputType.regular);
@@ -186,6 +153,9 @@ function SignUp() {
           InputType.error
         );
         setIsError(true);
+      } else if (password === "") {
+        setPasswordState(PasswordErrorMessage.empty, password, InputType.error);
+        setIsError(true);
       } else {
         setPasswordState(null, password, InputType.regular);
         setIsError(false);
@@ -203,6 +173,13 @@ function SignUp() {
           InputType.error
         );
         setIsError(true);
+      } else if (repeatPassword === "") {
+        setPasswordState(
+          PasswordErrorMessage.empty,
+          repeatPassword,
+          InputType.error
+        );
+        setIsError(true);
       } else {
         setRepeatPasswordState(null, repeatPassword, InputType.regular);
         setIsError(false);
@@ -211,7 +188,7 @@ function SignUp() {
 
   return (
     <>
-      <div className="page-container">
+      <div className="sign-up-page-container">
         <Card>
           <div className="sign-up-card-title">Sign Up</div>
           <Input
@@ -242,12 +219,13 @@ function SignUp() {
             linkText="Already have an account?"
             destination="/sign-in"
           />
-          <TinyLink
-            linkText="Forgot password?"
-            destination="/forgot-password"
-          />
           <Button
-            disabled={isError}
+            disabled={
+              login.text === "" ||
+              password.text === "" ||
+              repeatPassword.text === "" ||
+              isError
+            }
             buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
           >
             Continue
@@ -258,4 +236,3 @@ function SignUp() {
   );
 }
 
-export default SignUp;

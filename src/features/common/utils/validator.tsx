@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 
 const isLessThanThreeChars = (text: string) => {
   return text.length < 3;
@@ -13,7 +13,7 @@ const containsWhitespaces = (text: string) => {
 };
 
 const containsSpecialCharacters = (text: string) => {
-  return !text.match(/^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g);
+  return text.match(/[^A-Za-z0-9]/);
 };
 
 const isLessThanEightChars = (text: string) => {
@@ -25,11 +25,11 @@ const isMoreThanFifteenChars = (text: string) => {
 };
 
 const containsCapitalLetter = (text: string) => {
-  return text.match(/^[A-Z]*$/);
+  return !text.match(/.*[A-Z].*/);
 };
 
 const containsDigit = (text: string) => {
-  return text.match(/^[0-9]*$/);
+  return !text.match(/.*[0-9].*/);
 };
 
 const matchesValue = (text: string, value: string) => {

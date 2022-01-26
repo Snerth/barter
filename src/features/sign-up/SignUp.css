@@ -1,5 +1,8 @@
-.page-container {
-    background-color: #D8D6D6;
+.sign-up-page-container {
+    background-image: url('../common/assets/pexels-max-fischer-5868130.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
     display: flex;

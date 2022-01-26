@@ -5,16 +5,16 @@ button {
   width: max-content;
   border: none;
   padding: 0.7rem;
-  color: white;
+  color: var(--color-white);
   cursor: pointer;
 }
 
-.button--coral {
-  background-color: var(--color-coral);
+.button--green {
+  background-color: var(--color-green);
 }
 
-.button--coral:hover {
-  background-color: var(--color-coral-hover);
+.button--green:hover {
+  background-color: var(--color-green-hover);
   transition: 0.4s;
 }
 

@@ -3,18 +3,18 @@
   --color-gray-hover: #eeecec;
   --color-gray-dark: #9c9c9c;
 
-  --color-coral: #e98167;
-  --color-coral-hover: #fec2a3;
-  --color-coral-dark: #bd583f;
+  --color-green: #64a57d;
+  --color-green-hover: #84dba5;
+  --color-green-dark: #406b50;
 
   --color-black: rgb(24, 24, 24);
   --color-white: rgb(241, 241, 241);
 
-  --color-yellow: #c99e29;
-  --color-yellow-hover: #f0c859;
-  --color-yellow-dark: #917528;
+  --color-yellow: #eba434;
+  --color-yellow-hover: #ffbf59;
+  --color-yellow-dark: #bb8329;
 
-  --color-turquoise: #79aca9;
-  --color-turquoise-hover: #a6e2de;
-  --color-turquoise-dark: #437470;
+  --color-turquoise: #4b7d8a;
+  --color-turquoise-hover: #65a7b8;
+  --color-turquoise-dark: #33555e;
 }

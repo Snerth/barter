@@ -55,7 +55,7 @@ function SignIn() {
 
   return (
     <>
-      <div className="page-container">
+      <div className="sign-in-page-container">
         <Card>
           <div className="sign-in-card-title">Sign In</div>
           <Input

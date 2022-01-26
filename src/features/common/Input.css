@@ -39,9 +39,9 @@ input:not(:placeholder-shown) ~ .input-label-container .input-label {
 }
 
 .input--error {
-  border-bottom: 2px solid var(--color-coral);
-  background-color: var(--color-coral-hover);
-  color: var(--color-coral-dark);
+  border-bottom: 2px solid var(--color-yellow-dark);
+  background-color: var(--color-yellow-hover);
+  color: var(--color-yellow-dark);
 }
 
 .input--regular {
@@ -59,18 +59,6 @@ input:not(:placeholder-shown) ~ .input-label-container .input-label {
   border-bottom: 2px solid var(--color-gray-dark);
   background-color: var(--color-gray-hover);
   color: var(--color-gray-dark);
-}
-
-.input--warning {
-  border-bottom: 2px solid var(--color-yellow-dark);
-  background-color: var(--color-yellow-hover);
-  color: var(--color-yellow-dark);
-}
-
-.input--success {
-  border-bottom: 2px solid var(--color-turquoise-dark);
-  background-color: var(--color-turquoise-hover);
-  color: var(--color-turquoise-dark);
 }
 
 .input-label-container {

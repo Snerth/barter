@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignIn from "./features/sign-in/SignIn";
 import { ForgotPassword } from "./features/forgot-password/ForgotPassword";
-import SignUp from "./features/sign-up/SignUp";
+import { SignUp } from "./features/sign-up/SignUp";
 import { PersonalInformation } from "./features/personal-information/PersonalInformation";
 
 ReactDOM.render(
