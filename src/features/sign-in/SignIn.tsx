@@ -1,21 +1,36 @@
 import React, { ChangeEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
 import { Input } from "../common/Input";
+import { InputErrorMessage } from "../common/InputErrorMessage";
 import { TinyLink } from "../common/TinyLink";
-import { ButtonColor, IInputProps, InputType } from "../types/Types";
+import {
+  ButtonColor,
+  IInputProps,
+  ILoginState,
+  InputType,
+  IPasswordState,
+  LoginErrorMessage,
+  PasswordErrorMessage,
+} from "../types/Types";
 import "./SignIn.css";
 
 function SignIn() {
-  const [login, setLogin] = useState({
+  const [isError, setIsError] = useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isButtonClicked, setIsButtonClicked] = useState<boolean>(false);
+  const navigateToOverview = useNavigate();
+  const [login, setLogin] = useState<ILoginState>({
     text: "",
     loginInputType: InputType.regular,
+    loginErrorMessage: null,
   });
 
-  const [password, setPassword] = useState({
+  const [password, setPassword] = useState<IPasswordState>({
     text: "",
     passwordInputType: InputType.password,
+    passwordErrorMessage: null,
   });
 
   const loginInputProps: IInputProps = {
@@ -31,27 +46,62 @@ function SignIn() {
     type: "password",
   };
 
+  const setLoginState = (
+    loginErrorMessage: LoginErrorMessage | null,
+    text: string,
+    loginInputType: InputType
+  ) => {
+    setLogin((prev) => ({ ...prev, loginErrorMessage, text, loginInputType }));
+  };
+
+  const setPasswordState = (
+    passwordErrorMessage: PasswordErrorMessage | null,
+    text: string,
+    passwordInputType: InputType
+  ) => {
+    setPassword((prev) => ({
+      ...prev,
+      passwordErrorMessage,
+      text,
+      passwordInputType,
+    }));
+  };
+
   const handleLoginChange =
     () => (loginEvent: ChangeEvent<HTMLInputElement>) => {
       loginEvent.persist();
-      if (loginEvent.target.value === "error") {
-        setLogin({
-          text: loginEvent.target.value,
-          loginInputType: InputType.error,
-        });
+      const login = loginEvent.target.value;
+      if (login === "") {
+        setLoginState(LoginErrorMessage.empty, login, InputType.error);
+        setIsError(true);
       } else {
-        setLogin({
-          text: loginEvent.target.value,
-          loginInputType: InputType.regular,
-        });
+        setLoginState(null, login, InputType.regular);
+        setIsError(false);
       }
     };
 
   const handlePasswordChange =
-    () => (loginEvent: ChangeEvent<HTMLInputElement>) => {
-      loginEvent.persist();
-      setPassword({ ...password, text: loginEvent.target.value });
+    () => (passwordEvent: ChangeEvent<HTMLInputElement>) => {
+      passwordEvent.persist();
+      const password = passwordEvent.target.value;
+      if (password === "") {
+        setPasswordState(PasswordErrorMessage.empty, password, InputType.error);
+        setIsError(true);
+      } else {
+        setPasswordState(null, password, InputType.regular);
+        setIsError(false);
+      }
     };
+
+  const checkLoginAndPassword = (): void => {
+    setIsButtonClicked(true);
+    if (login.text === "login" && password.text === "logiN1234") {
+      setIsAuthenticated(true);
+      navigateToOverview("/overview", { replace: true });
+    } else {
+      setIsAuthenticated(false);
+    }
+  };
 
   return (
     <>
@@ -63,6 +113,9 @@ function SignIn() {
             value={login.text}
             onChange={handleLoginChange()}
           />
+          <InputErrorMessage
+            errorMessage={login.loginErrorMessage}
+          ></InputErrorMessage>
           <Input
             {...passwordInputProps}
             value={password.text}
@@ -73,7 +126,16 @@ function SignIn() {
             destination="/forgot-password"
           />
           <TinyLink linkText="Don't have an account?" destination="/sign-up" />
-          <Button buttonColor={ButtonColor.coral}>Sign In</Button>
+          <Button
+            disabled={isError}
+            buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
+            onClick={checkLoginAndPassword}
+          >
+            Sign In
+          </Button>
+          {!isAuthenticated && isButtonClicked && (
+            <InputErrorMessage errorMessage="Wrong login or password"></InputErrorMessage>
+          )}
         </Card>
       </div>
     </>

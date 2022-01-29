@@ -1,0 +1,33 @@
+@import '../common/utils/vars.css';
+
+.header-container {
+    height: 3rem;
+    background-color: var(--color-yellow);
+    padding: 0 3rem;
+    position: sticky;
+}
+
+.header {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.barter-logo {
+    width: auto;
+    height: 2rem;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.header-links {
+    display: flex;
+    width: 10rem;
+    justify-content: space-between;
+}
+
+.header-link-icon {
+    width: 2rem;
+    cursor: pointer;
+}

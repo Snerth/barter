@@ -12,7 +12,7 @@ function App() {
         <span>No money? No problem! </span>
         Our mission is to let you get things without having to pay anything!
         It's simple - get rid of the things you no more need and get what you
-        really want! Join Barter and start trading without touching your
+        want instead! Join Barter and start trading without touching your
         savings.
       </div>
       <div className="welcome-page-actions-container">

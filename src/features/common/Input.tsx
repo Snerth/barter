@@ -6,7 +6,7 @@ export const Input: React.FC<IInputProps> = (props: IInputProps) => {
   const { inputType, label, ...rest } = props;
   return (
     <label>
-      <input className={`${props.value ? inputType : ""}`} {...rest} />
+      <input className={inputType} {...rest} />
       <span className="input-label-container">
         <span className="input-label">{label}</span>
       </span>

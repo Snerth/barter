@@ -221,9 +221,6 @@ export const SignUp: React.FC = () => {
           />
           <Button
             disabled={
-              login.text === "" ||
-              password.text === "" ||
-              repeatPassword.text === "" ||
               isError
             }
             buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
