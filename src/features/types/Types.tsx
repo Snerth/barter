@@ -25,6 +25,12 @@ export enum InputType {
   success = "input--success",
 }
 
+export enum TradeStatus {
+  open = "OPEN",
+  promised = "PROMISED",
+  traded = "TRADED"
+}
+
 export interface ITinyLinkProps {
   destination: string;
   linkText: string;

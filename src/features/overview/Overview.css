@@ -1,0 +1,7 @@
+.trades-list-container {
+    border: 1px solid;
+    display: flex;
+    width: 62%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

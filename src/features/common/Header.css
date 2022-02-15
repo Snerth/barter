@@ -23,11 +23,16 @@
 
 .header-links {
     display: flex;
-    width: 10rem;
+    width: 12rem;
     justify-content: space-between;
 }
 
 .header-link-icon {
-    width: 2rem;
+    color: var(--color-white);
     cursor: pointer;
+    transition: .4s;
+}
+
+.header-link-icon:hover {
+    color: var(--color-white-hover);
 }

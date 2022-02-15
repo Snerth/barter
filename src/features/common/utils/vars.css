@@ -1,5 +1,5 @@
 :root {
-  --color-gray: #D8D6D6;
+  --color-gray: #d8d6d6;
   --color-gray-hover: #eeecec;
   --color-gray-dark: #9c9c9c;
 
@@ -8,7 +8,9 @@
   --color-green-dark: #406b50;
 
   --color-black: rgb(24, 24, 24);
-  --color-white: rgb(241, 241, 241);
+  --color-white: rgb(249, 249, 249);
+  --color-white-hover: rgb(255, 255, 255);
+  --color-white-transparent: rgba(255, 255, 255, 0.76);
 
   --color-yellow: #eba434;
   --color-yellow-hover: #ffbf59;

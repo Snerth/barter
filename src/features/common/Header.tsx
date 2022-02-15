@@ -2,9 +2,8 @@ import React from "react";
 import "./Header.css";
 import logo from "../common/assets/logo.jpeg";
 import { Avatar } from "./Avatar";
-import bell from '../common/assets/icons/bell.svg'
-import heart from '../common/assets/icons/heart.svg'
-import add from '../common/assets/icons/add.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCirclePlus, faBell, faHeart, faList } from '@fortawesome/free-solid-svg-icons'
 
 export const Header: React.FC<any> = () => {
   return (
@@ -12,9 +11,10 @@ export const Header: React.FC<any> = () => {
       <div className="header">
         <img className="barter-logo" src={logo} alt="Barter" />
         <div className="header-links">
-          <img className="header-link-icon" src={bell} alt="Notifications" />
-          <img className="header-link-icon" src={heart} alt="Wish List" />
-          <img className="header-link-icon" src={add} alt="Add Trade" />
+          <FontAwesomeIcon icon={faCirclePlus} className='header-link-icon' size="2x"/>
+          <FontAwesomeIcon icon={faBell} className="header-link-icon" size="2x" />
+          <FontAwesomeIcon icon={faHeart} className="header-link-icon" size="2x" />
+          <FontAwesomeIcon icon={faList} className="header-link-icon" size="2x" />
           <Avatar></Avatar>
         </div>
       </div>

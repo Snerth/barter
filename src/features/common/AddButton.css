@@ -1,0 +1,21 @@
+@import './utils/vars.css';
+
+.add-button-plus-icon {
+    color: var(--color-green);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.add-button-plus-icon:hover {
+    color: var(--color-green-hover);
+}
+
+.add-button-minus-icon {
+    color: var(--color-yellow);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.add-button-minus-icon:hover {
+    color: var(--color-yellow-hover);
+}
