@@ -23,6 +23,13 @@
   font-weight: 700;
   width: 100%;
   text-align: center;
+  transition: .3s;
+  color: var(--color-black);
+  cursor: pointer;
+}
+
+.trade-card-title:hover {
+  color: var(--color-black-hover);
 }
 
 .trade-card-bottom-container {

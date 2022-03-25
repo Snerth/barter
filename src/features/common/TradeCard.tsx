@@ -23,9 +23,9 @@ export const TradeCard: React.FC<any> = (props) => {
           modules={[Pagination, Navigation]}
           className="card-swiper"
         >
-          {pictures.map((imgUrl: string) => {
+          {pictures.map((imgUrl: string, index: number) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={index}>
                 <img className="slide-image" src={imgUrl} alt="Trade Image" />
               </SwiperSlide>
             );

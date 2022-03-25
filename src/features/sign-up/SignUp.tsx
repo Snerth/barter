@@ -5,7 +5,17 @@ import { Card } from "../common/Card";
 import { Input } from "../common/Input";
 import { TinyLink } from "../common/TinyLink";
 import validator from "../common/utils/validator";
-import { ButtonColor, IInputProps, ILoginState, InputType, IPasswordState, IRepeatPasswordState, LoginErrorMessage, PasswordErrorMessage, RepeatPasswordErrorMessage } from "../types/Types";
+import {
+  ButtonColor,
+  IInputProps,
+  ILoginState,
+  InputType,
+  IPasswordState,
+  IRepeatPasswordState,
+  LoginErrorMessage,
+  PasswordErrorMessage,
+  RepeatPasswordErrorMessage,
+} from "../types/Types";
 import { InputErrorMessage } from "../common/InputErrorMessage";
 import "./SignUp.css";
 
@@ -111,7 +121,6 @@ export const SignUp: React.FC = () => {
       } else if (validator.containsSpecialCharacters(login)) {
         setLoginState(LoginErrorMessage.noSpecialChars, login, InputType.error);
         setIsError(true);
-        // TODO resolve this issue
       } else if (login.length === 0) {
         setLoginState(LoginErrorMessage.empty, login, InputType.error);
         setIsError(true);
@@ -220,9 +229,7 @@ export const SignUp: React.FC = () => {
             destination="/sign-in"
           />
           <Button
-            disabled={
-              isError
-            }
+            disabled={isError}
             buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
           >
             Continue
@@ -231,5 +238,4 @@ export const SignUp: React.FC = () => {
       </div>
     </>
   );
-}
-
+};
