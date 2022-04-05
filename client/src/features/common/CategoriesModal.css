@@ -1,0 +1,49 @@
+@import '../common/utils/vars.css';
+
+.categories-modal-backdrop {
+    position: absolute;
+    z-index: 10000;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-black-transparent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories-modal-container {
+    width: 80vw;
+    min-height: 70vh;
+    display: flex;
+}
+
+.categories-list {
+    width: 40%;
+    background-color: var(--color-turquoise-light);
+}
+
+.subcategories-list {
+    width: 60%;
+    background-color: var(--color-turquoise-hover);
+}
+
+.category {
+    padding: 10px 30px;
+}
+
+.active-category {
+    padding: 10px 30px;
+    background-color: var(--color-turquoise);
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+.subcategory {
+    padding: 10px 30px;
+}
+
+.subcategory:hover {
+    background-color: var(--color-turquoise);
+    color: var(--color-white);
+    cursor: pointer;
+}

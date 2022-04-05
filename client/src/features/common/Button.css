@@ -1,0 +1,42 @@
+@import "./utils/vars.css";
+
+button {
+  min-width: 6rem;
+  width: max-content;
+  border: none;
+  padding: 0.7rem;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.button--green {
+  background-color: var(--color-green);
+}
+
+.button--green:hover {
+  background-color: var(--color-green-hover);
+  transition: 0.4s;
+}
+
+.button--gray {
+  background-color: var(--color-gray);
+  cursor: not-allowed;
+}
+
+.button--yellow {
+  background-color: var(--color-yellow);
+}
+
+.button--yellow:hover {
+  background-color: var(--color-yellow-hover);
+  transition: 0.4s;
+}
+
+.button--turquoise {
+  background-color: var(--color-turquoise);
+}
+
+.button--turquoise:hover {
+  background-color: var(--color-turquoise-hover);
+  transition: 0.4s;
+}

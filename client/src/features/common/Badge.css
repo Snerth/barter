@@ -1,0 +1,23 @@
+@import '../common/utils/vars.css';
+.badge-container {
+    width: max-content;
+    padding: 4px 10px;
+    border-radius: 15px;
+    color: var(--color-white);
+    position: absolute;
+    margin-top: .5rem;
+    margin-left: .5rem;
+    z-index: 1000;
+}
+
+.open-badge-container {
+    background-color: var(--color-green);
+}
+
+.promised-badge-container {
+    background-color: var(--color-yellow);
+}
+
+.traded-badge-container {
+    background-color: var(--color-gray-dark);
+}

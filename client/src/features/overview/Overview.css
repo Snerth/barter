@@ -1,0 +1,18 @@
+@import '../common/utils/vars.css';
+.trades-list-container {
+  width: 62%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.trades-list-container::after {
+  content: "";
+  flex: auto;
+}
+
+.no-results {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}

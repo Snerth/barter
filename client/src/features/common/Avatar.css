@@ -1,0 +1,20 @@
+@import '../common/utils/vars.css';
+
+.avatar-circle {
+    border: 2px solid transparent;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    transition: .4s;
+    overflow: hidden;
+}
+
+.avatar-circle:hover {
+    border: 2px solid var(--color-white);
+}
+
+.avatar-image {
+    width: 2rem;
+    height: auto;
+}

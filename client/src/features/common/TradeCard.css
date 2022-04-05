@@ -1,0 +1,60 @@
+@import "../common//utils/vars.css";
+
+.trade-card-container {
+  border: 1px solid var(--color-gray-hover);
+  width: 300px;
+  height: 333px;
+  border-radius: 5%;
+  box-shadow: 2px 6px 16px 1px rgba(182, 182, 182, 0.32);
+  margin: 15px 22.6px;
+}
+
+.trade-card-carousel-container {
+  width: 100%;
+  height: 66%;
+  border-radius: 5% 5% 0 0;
+  overflow: hidden;
+}
+
+.trade-card-content-container {
+  padding: 0.9rem;
+  background-color: var(--color-white);
+}
+
+.trade-card-title {
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  transition: .3s;
+  color: var(--color-black);
+  cursor: pointer;
+}
+
+.trade-card-title:hover {
+  color: var(--color-black-hover);
+}
+
+.trade-card-bottom-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+}
+
+.card-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-next {
+  color: var(--color-white) !important;
+}
+
+.swiper-button-prev {
+  color: var(--color-white-transparent) !important;
+}
+
+.swiper-pagination-progressbar-fill {
+  background: var(--color-yellow) !important;
+}

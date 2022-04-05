@@ -1,0 +1,23 @@
+@import '../common/utils/vars.css';
+
+.subheader-container {
+    padding: 1rem;
+}
+
+.subheader-container-content {
+    border: 1px solid;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subheader-filter-icon-unchecked {
+    cursor: pointer;
+    color: var(--color-green);
+}
+
+.subheader-filter-icon-checked {
+    cursor: pointer;
+    color: var(--color-green-dark);
+}
