@@ -8,11 +8,11 @@ import { CategoriesModal } from "./CategoriesModal";
 import { Input } from "./Input";
 import "./Subheader.css";
 
-export const Subheader: React.FC<any> = ({ searchTradesByName, handleSetShowFiltersSection }) => {
+export const Subheader: React.FC<any> = ({ searchTradesByName, handleSetShowFiltersSection, handleSetShowUserTrades, showUserTrades }) => {
   const searchInputProps: IInputProps = {
     inputType: InputType.regular,
-    label: "Search",
-    placeholder: "Enter your search query",
+    label: "Поиск",
+    placeholder: "Введите поисковый запрос",
   };
 
   const [checked, setChecked] = useState(false);
@@ -55,8 +55,9 @@ export const Subheader: React.FC<any> = ({ searchTradesByName, handleSetShowFilt
             onClick={handleShowCategoriesButtonClick}
             buttonColor={ButtonColor.turquoise}
           >
-            Pick a Category
+            Выбрать категорию
           </Button>
+          <Button onClick={() => handleSetShowUserTrades()} buttonColor={ButtonColor.coral}>{showUserTrades ? "Все товары" : "Мои товары"}</Button>
           <Input
             {...searchInputProps}
             value={search.text}

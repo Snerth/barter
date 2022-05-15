@@ -18,8 +18,9 @@ import {
 } from "../types/Types";
 import { InputErrorMessage } from "../common/InputErrorMessage";
 import "./SignUp.css";
+import { SignUpContinue } from "../sign-up-continue/SignUpContinue";
 
-export const SignUp: React.FC = () => {
+export const SignUp: React.FC<any> = ({ handleContinueRegistration }) => {
   const [isError, setIsError] = useState<boolean>(true);
 
   const [login, setLogin] = useState<ILoginState>({
@@ -42,21 +43,21 @@ export const SignUp: React.FC = () => {
 
   const loginInputProps: IInputProps = {
     inputType: login.loginInputType,
-    label: "Login",
-    placeholder: "Create your login",
+    label: "Логин",
+    placeholder: "Создайте ваш логин",
   };
 
   const passwordInputProps: IInputProps = {
     inputType: password.passwordInputType,
-    label: "Password",
-    placeholder: "Create your password",
+    label: "Пароль",
+    placeholder: "Создайте ваш пароль",
     type: "password",
   };
 
   const repeatPasswordInputProps: IInputProps = {
     inputType: repeatPassword.repeatPasswordInputType,
-    label: "Repeat Password",
-    placeholder: "Repeat password",
+    label: "Подтвердить пароль",
+    placeholder: "Подтвердите ваш пароль",
     type: "password",
   };
 
@@ -199,7 +200,7 @@ export const SignUp: React.FC = () => {
     <>
       <div className="sign-up-page-container">
         <Card>
-          <div className="sign-up-card-title">Sign Up</div>
+          <div className="sign-up-card-title">Зарегистрироваться</div>
           <Input
             {...loginInputProps}
             value={login.text}
@@ -224,16 +225,18 @@ export const SignUp: React.FC = () => {
           <InputErrorMessage
             errorMessage={repeatPassword.repeatPasswordErrorMessage}
           ></InputErrorMessage>
-          <TinyLink
-            linkText="Already have an account?"
-            destination="/sign-in"
-          />
-          <Button
-            disabled={isError}
-            buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
-          >
-            Continue
-          </Button>
+          <TinyLink linkText="Уже зарегистрированы?" destination="/sign-in" />
+          <Link to="/sign-up/continue">
+            <Button
+              disabled={isError}
+              buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
+              onClick={() => {
+                handleContinueRegistration(login.text, repeatPassword.text);
+              }}
+            >
+              Продолжить
+            </Button>
+          </Link>
         </Card>
       </div>
     </>

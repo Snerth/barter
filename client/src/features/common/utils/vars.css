@@ -8,7 +8,7 @@
   --color-green-dark: #406b50;
 
   --color-black: rgb(24, 24, 24);
-  --color-black-transparent: rgba(24, 24, 24, 0.479);
+  --color-black-transparent: rgba(0, 0, 0, 0.66);
   --color-black-hover: rgb(77, 77, 77);
   --color-white: rgb(249, 249, 249);
   --color-white-hover: rgb(255, 255, 255);

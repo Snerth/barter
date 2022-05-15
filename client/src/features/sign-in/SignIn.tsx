@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../common/Button";
 import { Card } from "../common/Card";
 import { Input } from "../common/Input";
@@ -16,7 +16,7 @@ import {
 } from "../types/Types";
 import "./SignIn.css";
 
-function SignIn() {
+export const SignIn: React.FC<any> = ({ checkDoesUserExist }) => {
   const [isError, setIsError] = useState<boolean>(true);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isButtonClicked, setIsButtonClicked] = useState<boolean>(false);
@@ -35,14 +35,14 @@ function SignIn() {
 
   const loginInputProps: IInputProps = {
     inputType: login.loginInputType,
-    label: "Login",
-    placeholder: "Enter your login",
+    label: "Логин",
+    placeholder: "Введите ваш логин",
   };
 
   const passwordInputProps: IInputProps = {
     inputType: password.passwordInputType,
-    label: "Password",
-    placeholder: "Enter your password",
+    label: "Пароль",
+    placeholder: "Введите ваш пароль",
     type: "password",
   };
 
@@ -95,7 +95,7 @@ function SignIn() {
 
   const checkLoginAndPassword = (): void => {
     setIsButtonClicked(true);
-    if (login.text === "login" && password.text === "logiN1234") {
+    if (checkDoesUserExist(login.text, password.text)) {
       setIsAuthenticated(true);
       navigateToOverview("/overview", { replace: true });
     } else {
@@ -107,7 +107,7 @@ function SignIn() {
     <>
       <div className="sign-in-page-container">
         <Card>
-          <div className="sign-in-card-title">Sign In</div>
+          <div className="sign-in-card-title">Войти</div>
           <Input
             {...loginInputProps}
             value={login.text}
@@ -121,25 +121,21 @@ function SignIn() {
             value={password.text}
             onChange={handlePasswordChange()}
           />
-          <TinyLink
-            linkText="Forgot password?"
-            destination="/forgot-password"
-          />
-          <TinyLink linkText="Don't have an account?" destination="/sign-up" />
+          <TinyLink linkText="Новый пользователь?" destination="/sign-up" />
           <Button
             disabled={isError}
             buttonColor={isError ? ButtonColor.gray : ButtonColor.coral}
             onClick={checkLoginAndPassword}
           >
-            Sign In
+            Войти
           </Button>
           {!isAuthenticated && isButtonClicked && (
-            <InputErrorMessage errorMessage="Wrong login or password"></InputErrorMessage>
+            <InputErrorMessage errorMessage="Неверный логин или пароль"></InputErrorMessage>
           )}
         </Card>
       </div>
     </>
   );
-}
+};
 
 export default SignIn;

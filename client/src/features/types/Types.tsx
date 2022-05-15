@@ -52,29 +52,63 @@ export interface IRepeatPasswordState {
 }
 
 export enum LoginErrorMessage {
-  moreThanThreeChars = "Login must contain at least 3 characters",
-  unique = "This login is already taken. Please, try another one",
-  lessThanTenChars = "Login must contain maximum 10 characters",
-  noWhitespace = "Login must not contain whitespaces",
-  noSpecialChars = "Login must not contain special characters",
-  empty = "Login field must not be empty",
+  moreThanThreeChars = "Логин должен содержать минимум 3 символа",
+  unique = "Этот логин уже занят. Выберите другой",
+  lessThanTenChars = "Логин должен содержать максимум 10 символов",
+  noWhitespace = "Логин не должен содержать пробелы",
+  noSpecialChars = "Логин не должен содержать специальные символы",
+  empty = "Поле логина не может быть пустым",
 }
 
 export enum PasswordErrorMessage {
-  moreThanEightChars = "Password must contain at least 8 characters",
-  lessThanFifteenCharacters = "Password must contain maximum 15 characters",
-  atLeastOneCapitalChar = "Password must contain at least one capital character",
-  atLeastOneDigit = "Password must contain at least one digit",
-  empty = "Password field must not be empty",
+  moreThanEightChars = "Пароль должен содержать минимум 8 символов",
+  lessThanFifteenCharacters = "Пароль должен содержать максимум 15 символов",
+  atLeastOneCapitalChar = "Пароль должен содержать хотя бы одну заглавную букву",
+  atLeastOneDigit = "Пароль должен содержать хотя бы одну цифру",
+  empty = "Поле пароля не может быть пустым",
+}
+
+export enum TradeNameErrorMessage {
+  moreThanTwentyChars = "Название не должно превышать длину в 20 символов",
+  empty = "Название является обязательным полем",
 }
 
 export enum RepeatPasswordErrorMessage {
-  matches = "Passwords must match",
-  empty = "Repeat password field must not be empty",
+  matches = "Пароли должны совпадать",
+  empty = "Поле подтверждения пароля не может быть пустым",
 }
 
 export interface IPasswordState {
   passwordErrorMessage: PasswordErrorMessage | null;
   text: string;
   passwordInputType: InputType;
+}
+
+export interface ITradeNameState {
+  tradeNameErrorMessage: TradeNameErrorMessage | null;
+  text: string;
+  tradeNameInputType: InputType;
+}
+
+export interface IUser {
+  id: number,
+  firstName: string,
+  secondName: string,
+  login: string,
+  password: string,
+  email: string,
+  address: string,
+  phoneNumber: string,
+  picture: string,
+  age: number,
+  trades: ITrade[]
+}
+
+export interface ITrade {
+  id: number,
+  status: TradeStatus,
+  pictures: Array<string>,
+  owner: IUser,
+  title: string,
+  description: string,
 }

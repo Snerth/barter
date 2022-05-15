@@ -2,14 +2,15 @@
 
 .subheader-container {
     padding: 1rem;
+    background-color: var(--color-gray-hover);
 }
 
 .subheader-container-content {
-    border: 1px solid;
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
+    column-gap: 1rem;
 }
 
 .subheader-filter-icon-unchecked {

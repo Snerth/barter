@@ -1,0 +1,17 @@
+.sign-up-continue-page-container {
+    background-image: url('../common/assets/pexels-max-fischer-5868130.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-up-continue-card-title {
+    align-self: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
